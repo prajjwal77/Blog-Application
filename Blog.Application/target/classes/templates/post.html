@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${post.title}">Post Title</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?nature,blog') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 60%;
+            margin: 5% auto;
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            margin: 20px 0;
+        }
+        .action-buttons {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .action-buttons a {
+            font-size: 1.5em;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+         
+        .btn:hover {
+            color: #0056b3;
+        }
+        .update-link:hover {
+            color: #004080;
+        }
+        .delete-link:hover {
+            color: rgb(128, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${post.title}">Post Title</h1>
+        <hr/>
+        <p th:text="${post.content}">Post Content</p>
+        <div class="action-buttons">
+            <a style="color: #007BFF;" class="btn" href="/index"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            <a style="color: #0056b3;" th:href="@{/update/{id}(id=${post.id})}" class="update-link"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a style="color: red;" th:href="@{/delete/{id}(id=${post.id})}" class="delete-link"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

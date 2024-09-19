@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blogs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+			background-image: url('/images/blog1.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+			 display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            
+        }
+        .new-post-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .new-post-link:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+	   
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Posts</h1>
+
+       <li th:each="post : ${post}">
+     
+            <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}">Post Title</a>
+      </li>
+        </ul>
+       
+    </div>
+        	<script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

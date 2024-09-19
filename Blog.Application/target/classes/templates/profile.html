@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/images/blog2.webp');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            margin-right: 20px;
+        }
+        .profile-header h2 {
+            margin: 0;
+        }
+        .profile-details {
+            margin-top: 20px;
+        }
+        .profile-details p {
+            line-height: 1.6;
+        }
+        .profile-actions a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .profile-actions a:hover {
+            background-color: #0056b3;
+        }
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #dc3545;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout" class="logout">Logout</a>
+        <div class="profile-header">
+            <img th:src="${user.profilePhoto != null ? user.profilePhoto : '/images/profile.png'}" alt="Profile Picture">
+            <div>
+                <h2 th:text="${user.fullName}">John Doe</h2>
+                <p th:text="${user.email}">john.doe@example.com</p>
+            </div>
+        </div>
+        <div class="profile-details">
+            <h3>About Me</h3>
+            <p th:text="${user.aboutMe}">Welcome to my profile! Here you can learn more about my background, interests, and the blogs I've written. I'm passionate about sharing knowledge and connecting with like-minded individuals.</p>
+        </div>
+        <div class="profile-actions">
+            <a href="/edit-profile">Edit Profile</a>
+        </div>
+    </div>
+</body>
+</html>
+

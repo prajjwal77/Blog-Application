@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/images/blog2.webp');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], textarea {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Profile</h2>
+        <form th:action="@{/update-profile}" th:object="${user}" method="post" enctype="multipart/form-data">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" th:field="*{fullName}" placeholder="Full Name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Email" required>
+            
+            <label for="aboutMe">About Me</label>
+            <textarea id="aboutMe" th:field="*{aboutMe}" placeholder="Tell us about yourself" required></textarea>
+            
+            <label for="profilePhoto">Profile Photo</label>
+            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+            
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
+</body>
+</html>
+
